@@ -1,33 +1,57 @@
-### Bandit
-    # Nivel 0 Ingresar por SSH al puerto 2220 usuario bandit0 contraseña bandit0
-ssh bandit0@bandit.labs.overthewire.org -p 2220
+# Bandit
 
-    # Nivel 1 La contraseña para el siguiente nivel esta en el archivo readme en el directorio principal.
-                # La "~" que esta en nuestro promt "bandit0@bandit:´~´$" nos indica que estamos en el directorio "/home..." de nuestro usuario (bandit0). Realizamos una inspección de los archivos que hay.
-                # Vemos que en efecto hay un archivo llamada "readme", por lo que lo revisamos con el comando "cat", que nos ayuda a imprimir en pantalla lo que un archivo tiene sin necesidad de abrir lo.
-                # No aparece la contraseña.
-boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+### Nivel 0 - Ingresar por SSH al puerto 2220 usuario bandit0 contraseña bandit0
+    ssh bandit0@bandit.labs.overthewire.org -p 2220
+    bandit0
+### Nivel 1 - La siguiente contraseña se almacena en un archivo llamado 'readme'.
+    ls
+        readme
+    cat readme
+        boJ9jbbUNNfktd78OOpsqOltutMc3MY1
 
-    # Nivel 1 La contraseña para el siguiente nivel esta localizada en un archivo llamado "-" en el directorio "/home".
-                # Se realiza un inspección de archivos
-ls -la
+### Nivel 2 - La siguiente contraseña se almacena en un archivo llamado '-'.
+    ls
+        -
+    cat /home/bandit1/-
+        CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
 
-                # Se ve que el archivo esta en el directorio pero por el nombre del archivo no podemos facil mente.
-                # Agregamos toda la ruta y el nombre del archivo. Para conocer la ruta en la que nos encontramos;
-pwd
-/home/bandit1
 
-                # Agregamos ruta y archivo al comando "cat".
 
-cat /home/bandit1/-
-CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
 
-    # Nivel 2 la contraseña esta en un archivo que lleva espacios nombre.
-                # Hay que revisar en que directorio estamos y enlistar los archivos que estan dentro de el.
 
-:~$ pwd
-/home/bandit2
-:~$ ls -la
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Nivel 1 La contraseña para el siguiente nivel esta en el archivo readme en el directorio principal.</br>
+- La "~" que esta en nuestro promt "bandit0@bandit:´~´$" nos indica que estamos en el directorio "/home..." de nuestro usuario (bandit0). Realizamos una inspección de los archivos que hay.</br>
+- Vemos que en efecto hay un archivo llamada "readme", por lo que lo revisamos con el comando "cat", que nos ayuda a imprimir en pantalla lo que un archivo tiene sin necesidad de abrir lo.</br>
+- No aparece la contraseña.
+    boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+### Nivel 1 La contraseña para el siguiente nivel esta localizada en un archivo llamado "-" en el directorio "/home".
+- Se realiza un inspección de archivos.</br>
+    ls -la
+- Se ve que el archivo esta en el directorio pero por el nombre del archivo no podemos facil mente.</br>
+- Agregamos toda la ruta y el nombre del archivo. Para conocer la ruta en la que nos encontramos;</br>
+    pwd
+        /home/bandit1
+- Agregamos ruta y archivo al comando "cat".
+    cat /home/bandit1/-
+        CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+### Nivel 2 la contraseña esta en un archivo que lleva espacios nombre.</br>
+Hay que revisar en que directorio estamos y enlistar los archivos que estan dentro de el.
+    pwd
+        /home/bandit2
+    ls -la
 spaces in this filename
 
                 # Con base a las intrucciones deducimos donde esta la contraseña. Le realizamos un comando "cat" agregando una \ antes de cada espacio o también se puede colocar la primera letra y la tecla tabulación dado que es el unico archivo empiesa con esta letra.
