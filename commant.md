@@ -1,5 +1,38 @@
 # Admin Srv Linux
 
+## Alias
+Para generar nuevos comandos con instruccines especificas utilizando comandos existentes y flag´s.
+
+*   Hay validar que en el archivo "~./bashrc" se encuentre la siguiente descripción.
+```
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# /.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f /.bash_aliases ]; then
+    . /.bash_aliases
+fi
+```
+&ensp; &ensp; &ensp; &ensp; &ensp; &ensp; Si no se encuentra, abria que escribir lo.
+
+*   Se creal el archivo ".bash_aliases" en la ruta "~".
+*   Dentro dl archivo se van agenerando los alias. La sintaxis es la siguiente;
+```
+alias "nombre del alias"="'Comandos, flag´s y patch que se van a utilizar, todo va dentro de comillas simples.'"
+
+alias vpy='python3 -m venv venv'
+```
+*   Al finalizar de editar cada archivo hay que reiniciar lo por lo que se corre lo siguiente, segun corresponda.
+
+
+```
+source ~/.bashrc
+
+source ~/.bash_aliases
+```
+
+
 ## Comandos
 
 ### Comandos epeciales
