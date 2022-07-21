@@ -7,13 +7,17 @@
 ╩ ╩╩═╝╩╩ ╩╚═╝  ╩═╝╩╝╚╝╚═╝╩ ╚═
 Comment
 # Update file
-alias sourcea='source $HOME/.bash_aliases && source $HOME/.profile'
+alias sourcea='source $HOME/.bash_aliases && source $HOME/.profile && source $HOME/.bashrc'
 # Remove and confirm
 alias rm='rm -i'
 # Copy and confirm
 alias cp='cp -i'
 # Move and confirm
 alias mv='mv -i'
+# edit .bash_aliase
+alias editalias='vim ~/.bash_aliases && sourcea'
+# grep .bash_aliase
+alias showalias='cat ~/.bash_aliases | grep'
 << 'Comment'
 ╔═╗╦  ╦╔═╗╔═╗  ╔═╗╦ ╦╔╦╗╦ ╦╔═╗╔╗╔
 ╠═╣║  ║╠═╣╚═╗  ╠═╝╚╦╝ ║ ╠═╣║ ║║║║
@@ -53,12 +57,12 @@ alias gignore='touch .gitignore'
 ╩ ╩╩═╝╩╩ ╩╚═╝  ═╩╝╚═╝╚═╝╩ ╩╚═╝╩╚═
 Comment
 # Stop al running container
-alias dstopped='docker stop $(docker ps -aq)'
+alias dstopped='docker stop $(docker ps -aq) 2> /dev/null && docker ps -aq'
 # Remove all container
-alias dcleanc='docker rm $(docker ps -aq)'
+alias dcleanc='docker rm -f $(docker ps -aq) 2> /dev/null  && docker ps -aq'
 # Remove all image
-alias dcleani='docker rmi $(docker image ls -a)'
+alias dcleani='docker rmi image -f $(docker image ls -aq) 2> /dev/null && docker image ls -aq'
 # Remove all
-alias dcleana='docker rm $(docker ps -aq) && docker rmi $(docker image -aq)'
+alias dcleana='docker rm -f $(docker ps -aq) 2> /dev/null && docker rmi image -f $(docker image ls -aq)  2> /dev/null && docker ps -aq && docker image ls -aq'
 # Kills all the detainees
 alias dkilld='docker rm $(docker ps --filter status=exited -q)'
