@@ -51,6 +51,7 @@ alias gmerge='git merge'
 alias gclone='git clone'
 # Creates file gitignore
 alias gignore='touch .gitignore'
+
 << 'Comment'
 ╔═╗╦  ╦╔═╗╔═╗  ╔╦╗╔═╗╔═╗╦╔═╔═╗╦═╗
 ╠═╣║  ║╠═╣╚═╗   ║║║ ║║  ╠╩╗║╣ ╠╦╝
@@ -66,3 +67,6 @@ alias dcleani='docker rmi image -f $(docker image ls -aq) 2> /dev/null && docker
 alias dcleana='docker rm -f $(docker ps -aq) 2> /dev/null && docker rmi image -f $(docker image ls -aq)  2> /dev/null && docker ps -aq && docker image ls -aq'
 # Kills all the detainees
 alias dkilld='docker rm $(docker ps --filter status=exited -q)'
+
+
+
