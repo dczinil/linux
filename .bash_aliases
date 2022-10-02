@@ -8,6 +8,8 @@ comment
 ╠═╣║  ║╠═╣╚═╗  ║  ║║║║║ ║╔╩╦╝
 ╩ ╩╩═╝╩╩ ╩╚═╝  ╩═╝╩╝╚╝╚═╝╩ ╚═
 Comment
+# Clear terminal
+alias cls='clear'
 # "sourcea" Update file
 alias sourcea='source /etc/profile'
 # "rm" Remove and confirm
