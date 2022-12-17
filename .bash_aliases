@@ -22,6 +22,8 @@ alias mv='mv -i'
 alias editalias='vim ~/.bash_aliases && sourcea'
 # "showa" show custom commands
 alias showa='cat ~/.bash_aliases | grep "#"'
+# "cpkey" copy key file
+alias cpkey='xclip -selection clipboard <'
 << 'Comment'
 ╔═╗╦  ╦╔═╗╔═╗  ╔═╗╦ ╦╔╦╗╦ ╦╔═╗╔╗╔
 ╠═╣║  ║╠═╣╚═╗  ╠═╝╚╦╝ ║ ╠═╣║ ║║║║
