@@ -6,16 +6,16 @@ call plug#begin('~/.vim/plugged')
 
 ""syntax
 Plug 'sheerun/vim-polyglot'
-"Plug 'HerringtonDarkholme/yats.vim'
-"Plug 'yuesk/vim-js'
-"Plug 'flowtype/vim-flow'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'yuesk/vim-js'
+Plug 'flowtype/vim-flow'
 
 ""Satus bar
 Plug 'maximbaz/lightline-ale'
 Plug 'itchyny/lightline.vim'
 
 ""Themes
-Plug 'morhetz/gruvbox'
+""Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline-gruvbox.vim'
 
 ""Tree
@@ -38,7 +38,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tyewang/vimux-jest-test'
 Plug 'janko-m/vim-test'
 
-
 ""IDE
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf'
@@ -53,6 +52,12 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 
 Plug 'tpope/vim-repeat'
+
+""other
+Plug 'easymotion/vim-easymotion'
+
+""file
+Plug 'scrooloose/nerdtree'
 
 call plug#end()
 ""call vundle#end() " required
