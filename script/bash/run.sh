@@ -177,6 +177,17 @@ if [[ -f "$HOME/git-completion.bash" ]]; then
 	source "$HOME/git-completion.bash"
 fi
 
+# Alias and bookmark the web folder (try to guess it's location)
+# This will NOT overwrite a "web" alias previously definded in .bash_aliases
+if [[ "$(type -t web)" != 'alias' ]]; then
+	if [[ -d /var/www/html ]]; then
+		alias web='cd /var/www/html'
+		export web="/var/www/html"
+	elif [[ -d /srv/http ]]; then
+		alias web='cd /srv/http'
+		export web="/srv/http"
+	fi
+fi
 
 if [ -d /etc/profile.d ]; then
   for i in /etc/profile.d/custom.sh; do

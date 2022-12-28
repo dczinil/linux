@@ -1,7 +1,3 @@
-""set rtp+=~/.vim/bundle/Vundle.vim
-""call vundle#begin()
-""let g:clang_c_options = '-std=gnu11'
-""Plugin 'VundleVim/Vundle.vim'
 call plug#begin('~/.vim/plugged')
 
 ""syntax
@@ -15,15 +11,15 @@ Plug 'maximbaz/lightline-ale'
 Plug 'itchyny/lightline.vim'
 
 ""Themes
-""Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline-gruvbox.vim'
 
 ""Tree
 Plug 'scrooloose/nerdtree'
 
 ""Typing
-Plug 'jiangmiao/auto-pairs'
-Plug 'alvan/vim-closetag'
+Plug 'jiangmiao/auto-pairs' ""Auto brackets
+Plug 'alvan/vim-closetag' ""close tag
 Plug 'tpope/vim-surround'
 
 ""tmux
@@ -50,7 +46,6 @@ Plug 'scrooloose/nerdcommenter'
 
 ""Git
 Plug 'tpope/vim-fugitive'
-
 Plug 'tpope/vim-repeat'
 
 ""other
@@ -60,5 +55,3 @@ Plug 'easymotion/vim-easymotion'
 Plug 'scrooloose/nerdtree'
 
 call plug#end()
-""call vundle#end() " required
-""filetype plugin indent on " required

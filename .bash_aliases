@@ -43,19 +43,12 @@ alias ipexternal='wget -O - -q icanhazip.com && echo'
 alias untar='tar -xvf'
 # "nano" edit nano
 alias nano='nano --smarthome --multibuffer --const --autoindent'
+# "maxproc" See the processes that consume the most
+# Add in negative the number of processes to review"
+alias maxproc='ps axuf | sort -nr -k3 | head '
+# "maxproc5" See the processes that consume the most
+alias maxproc5='ps axuf | sort -nr -k3 | head -5'
 
-
-# Alias and bookmark the web folder (try to guess it's location)
-# This will NOT overwrite a "web" alias previously definded in .bash_aliases
-if [[ "$(type -t web)" != 'alias' ]]; then
-	if [[ -d /var/www/html ]]; then
-		alias web='cd /var/www/html'
-		export web="/var/www/html"
-	elif [[ -d /srv/http ]]; then
-		alias web='cd /srv/http'
-		export web="/srv/http"
-	fi
-fi
 << 'Comment'
 ╔═╗╦  ╦╔═╗╔═╗  ╔═╗╦ ╦╔╦╗╦ ╦╔═╗╔╗╔
 ╠═╣║  ║╠═╣╚═╗  ╠═╝╚╦╝ ║ ╠═╣║ ║║║║
