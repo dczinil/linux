@@ -24,6 +24,38 @@ alias editalias='vim ~/.bash_aliases && sourcea'
 alias showa='cat ~/.bash_aliases | grep "#"'
 # "cpkey" copy key file
 alias cpkey='xclip -selection clipboard <'
+# "" Go back directories
+alias ..='\cd ..'
+alias ...='\cd ../..'
+alias ....='\cd ../../..'
+alias .....='\cd ../../../..'
+# Change to the home directory
+alias home='\cd ~'
+# "ping" echo 
+alias ping='ping -c 5'
+# "ports" showopen ports
+alias ports='netstat -tulanp'
+# "iplocal" get local ip 
+alias iplocal="ip -br -c a"
+# "ipexternal" get public ip
+alias ipexternal='wget -O - -q icanhazip.com && echo'
+# "untar" unzip files
+alias untar='tar -xvf'
+# "nano" edit nano
+alias nano='nano --smarthome --multibuffer --const --autoindent'
+
+
+# Alias and bookmark the web folder (try to guess it's location)
+# This will NOT overwrite a "web" alias previously definded in .bash_aliases
+if [[ "$(type -t web)" != 'alias' ]]; then
+	if [[ -d /var/www/html ]]; then
+		alias web='cd /var/www/html'
+		export web="/var/www/html"
+	elif [[ -d /srv/http ]]; then
+		alias web='cd /srv/http'
+		export web="/srv/http"
+	fi
+fi
 << 'Comment'
 ╔═╗╦  ╦╔═╗╔═╗  ╔═╗╦ ╦╔╦╗╦ ╦╔═╗╔╗╔
 ╠═╣║  ║╠═╣╚═╗  ╠═╝╚╦╝ ║ ╠═╣║ ║║║║
@@ -38,26 +70,37 @@ alias avenv='source venv/bin/activate'
 ╠═╣║  ║╠═╣╚═╗  ║ ╦║ ║ 
 ╩ ╩╩═╝╩╩ ╩╚═╝  ╚═╝╩ ╩ 
 Comment
-# "branch"
-alias branch='git branch -r'
+# "repos" repo dev
+alias repos='cd ~/pro'
+# "gbranch"
+alias gbranch='git branch -r'
 # "ginit" Initialize repository in current folder
 alias ginit='git init'
 # "gcommit" Commit
 alias gcommit='git commit -m'
-# "gremote" Remove add
+# "gr" Remove add
 alias gremote='git remote add'
-# "ggraph" Graphical history of the comments
-alias ggraph='git log --all --graph --decorate --oneline'
+# "ggr" Graphical history of the comments
+alias ggr='git log --all --graph --decorate --oneline'
+# "ggl" git lg color
+alias ggl='git log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short'
 # "gcheckb" Create banch and enter this
 alias gcheckb='git checkout -b'
-# "gpusho" Push origin
-alias gpusho='git push origin'
+# "gp" Push origin
+alias gp='git push origin'
 # "gmerge" Merge
 alias gmerge='git merge'
 # "gclone" Clone reporitory
 alias gclone='git clone'
 # "gignore" Creates file gitignore
 alias gignore='touch .gitignore'
+# "gstatus" status repo
+alias gstatus='git status'
+
+# Find all Git repos in the current directory recursively
+# Note: Excludes hidden and temp directories
+# You can find all git repos on the entire system using: locate .git | grep "/.git$"
+alias gitrepos="find . -type d -not -path '*/.git/*' -not -path '*/tmp/*' -not -path '*/temp/*' -not -path '*/.*' -exec test -e '{}/.git' ';' -print -prune"
 << 'Comment'
 ╔═╗╦  ╦╔═╗╔═╗  ╔╦╗╔═╗╔═╗╦╔═╔═╗╦═╗
 ╠═╣║  ║╠═╣╚═╗   ║║║ ║║  ╠╩╗║╣ ╠╦╝

@@ -1,8 +1,14 @@
 #!/bin/bash
 
+echo "########################"
+echo "## create repo folder ##"
+echo "########################"
+
+mkdir -p /tmp/{installdeb,installrun,installgit,installtar}
+
 apt update
 apt upgrade -y
-apt install -y nmap net-tools git htop vim tree curl wget xclip openssh-server apt-transport-https ca-certificates gnupg software-properties-common 
+apt install -y exa nmap net-tools git htop vim tree curl wget xclip openssh-server apt-transport-https ca-certificates gnupg software-properties-common
 
 echo "########################"
 echo "########################"
@@ -22,10 +28,14 @@ nvm install --lts
 echo "#########################"
 echo "##   Install Golang    ##"
 echo "#########################"
-cd /tpm/installdeb
+cd /tmp/installtar
 wget https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz
 rm -rf /usr/local/go && tar -C /usr/local -xzf go1.19.4.linux-amd64.tar.gz
 echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.bashrc
+echo "export GOPATH=$HOME/go" >> ~/.bashrc
+echo "export GOBIN=$GOPATH/bin" >> ~/.bashrc
+echo "export GOROOT=/usr/local/go" >> ~/.bashrc
+source $HOME/.bashrc
 go version
 
 echo #########################
@@ -120,6 +130,26 @@ ln -s $HOME/pro/linux/.vimrc $HOME/
 echo "#########################"
 echo "##  edit file .bashrc  ##"
 echo "#########################"
+cd /tmp/installgit
+git clone https://github.com/arialdomartini/oh-my-git.git ~/.oh-my-git
+echo source ~/.oh-my-git/prompt.sh >> ~/.bashrc
+source $HOME/oh-my-git/prompt.sh
+# Copy the awesome fonts to ~/.fonts
+cd /tmp/installgit
+git clone http://github.com/gabrielelana/awesome-terminal-fonts
+cd awesome-terminal-fonts
+git checkout patching-strategy
+mkdir -p ~/.fonts{Droid-Sans-Mono,Inconsolata,Source-Code-Pro}
+cp patched/SourceCodePro+Powerline+Awesome+Regular.ttf ~/.fonts/Source-Code-Pro
+cp patched/Droid+Sans+Mono+Awesome.ttf ~/.fonts/Droid-Sans-Mono
+cp patched/Inconsolata+Awesome.ttf ~/.fonts/Inconsolata
+cp ~/.fonts/* /usr/share/fonts/truetype
+# update the font-info cache
+fc-cache -fv ~/.fonts
+# Git Auto-Completion
+wget -O ~/git-completion.bash https://github.com/git/git/raw/master/contrib/completion/git-completion.bash
+
+
 (
 cat <<EOF
 # Alias definitions.
@@ -142,9 +172,15 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Git Auto-Completion
+if [[ -f "$HOME/git-completion.bash" ]]; then
+	source "$HOME/git-completion.bash"
+fi
+
+
 if [ -d /etc/profile.d ]; then
-  for i in /etc/profile.d/*.sh; do
-    if [ -r $i ]; then
+  for i in /etc/profile.d/custom.sh; do
+  if [ -r  ]; then
       . $i
     fi
   done
