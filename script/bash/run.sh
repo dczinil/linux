@@ -64,7 +64,7 @@ mkdir -p /tmp/{installdeb,installrun,installgit,installtar}
 
 update
 upgrade -y
-install -y exa nmap net-tools git htop vim tree curl wget xclip openssh-server apt-transport-https ca-certificates gnupg software-properties-common
+install -y vagrant axa nmap net-tools git htop vim tree curl wget xclip openssh-server apt-transport-https ca-certificates gnupg software-properties-common
 
 echo "########################"
 echo "########################"
@@ -195,7 +195,7 @@ cd /tmp/installgit
 git clone http://github.com/gabrielelana/awesome-terminal-fonts
 cd awesome-terminal-fonts
 git checkout patching-strategy
-mkdir -p ~/.fonts{Droid-Sans-Mono,Inconsolata,Source-Code-Pro}
+mkdir -p ~/.fonts/{Droid-Sans-Mono,Inconsolata,Source-Code-Pro}
 cp patched/SourceCodePro+Powerline+Awesome+Regular.ttf ~/.fonts/Source-Code-Pro
 cp patched/Droid+Sans+Mono+Awesome.ttf ~/.fonts/Droid-Sans-Mono
 cp patched/Inconsolata+Awesome.ttf ~/.fonts/Inconsolata
