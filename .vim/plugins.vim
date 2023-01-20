@@ -43,6 +43,9 @@ Plug 'easymotion/vim-easymotion'
 Plug 'mhinz/vim-signify'
 Plug 'yggdroot/indentline'
 Plug 'scrooloose/nerdcommenter'
+""Developers
+""Golang
+Plug 'fatih/vim-g', {'do': ':GoUpdateBinaries' }
 
 ""Git
 Plug 'tpope/vim-fugitive'

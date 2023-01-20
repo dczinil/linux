@@ -1,3 +1,15 @@
 README.md
 .replit
 replit.nix
+.vim/pluggend/editorconfig-vim
+.vim/pluggend/fzf
+.vim/pluggend/gruvbox
+.vim/pluggend/indentline
+.vim/pluggend/lightline-ale
+.vim/pluggend/nerdcommenter
+.vim/pluggend/nerdtree
+.vim/pluggend/utisnips
+.vim/pluggend/vim*
+.vim/pluggend/*.vim
+script/bash/secrets.GITHUB_TOKEN
+.vim/%*
