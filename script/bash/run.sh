@@ -1,57 +1,5 @@
 #!/bin/bash
-echo "#################################################"
-echo "## Depending on the installed package managers ##"
-echo "#################################################"
-if [[ -x "$(command -v dnf)" ]]; then # RedHat/Fedora
-	alias has='dnf info'
-	alias updateall='sudo dnf upgrade --refresh'
-	alias gupdate='sudo dnf upgrade'
-	alias install='sudo dnf install'
-	alias remove='sudo dnf remove'
-	alias autoremove='sudo dnf autoremove'
-	alias search='sudo dnf search'
-	alias list='dnf list installed'
-	alias dependencies='yum whatprovides'
-elif [[ -x "$(command -v yum)" ]]; then # RedHat/Fedora
-	alias has='yum info'
-	alias updateall='sudo yum clean all && yum -y update'
-	alias gupdate='sudo yum update'
-	alias install='sudo yum install'
-	alias remove='sudo yum remove'
-	alias autoremove='sudo yum autoremove'
-	alias search='sudo yum search'
-	alias list='yum list installed'
-	alias dependencies='yum whatprovides'
-elif [[ -x "$(command -v apt)" ]]; then # Debian/Ubuntu/Raspbian
-	# Link: https://itsfoss.com/apt-command-guide/
-	alias has='apt show'
-	alias updateall='sudo apt update --assume-yes && sudo apt upgrade --assume-yes && if type pacstall >/dev/null 2>&1; then pacstall --upgrade; fi && if type tldr >/dev/null 2>&1; then tldr --update; fi'
-	alias update='sudo apt-get install --only-upgrade'
-	alias install='sudo apt install'
-	alias remove='sudo apt remove'
-	alias autoremove='sudo apt autoremove'
-	alias search='sudo apt search'
-	alias list='sudo apt list --installed'
-	alias check='sudo apt update --assume-yes && apt list --upgradable'
-elif [[ -x "$(command -v apt-get)" ]]; then # Debian/Ubuntu
-	# Link: https://help.ubuntu.com/community/AptGet/Howto
-	alias has='apt-cache show'
-	alias updateall='sudo apt-get update && sudo apt-get upgrade && if type pacstall >/dev/null 2>&1; then pacstall --upgrade; fi && if type tldr >/dev/null 2>&1; then tldr --update; fi'
-	alias gupdate='sudo apt-get install --only-upgrade'
-	alias install='sudo apt-get install'
-	alias remove='sudo apt-get remove'
-	alias autoremove='sudo apt-get autoremove'
-	alias search='sudo apt-cache search'
-	alias list='sudo dpkg -l'
-elif [[ -x "$(command -v zypper)" ]]; then # SUSE
-	# Link: https://en.opensuse.org/SDB:Zypper_usage
-	alias has='zypper info'
-	alias gupdateall='sudo zypper patch'
-	alias update='sudo zypper up'
-	alias install='sudo zypper in'
-	alias remove='sudo zypper rm'
-	alias autoremove='sudo zypper packages --orphaned'
-	alias search='sudo zypper se'
+
 
 
 
