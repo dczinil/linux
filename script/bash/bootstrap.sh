@@ -22,18 +22,9 @@ GIT_COMMITER_EMAIL="$GIT_AUTHOR_EMAIL"
 echo "SSH Configuration"
 echo "Warning... An SSH paaword will be generated with a specific name and revealing its utility."
 echo "The flags "-q" make it silent and "-P" make it not use a phrase."
-
 ssh-keygen -t ed25519 -C "$GIT_AUTHOR_EMAIL" -f $HOME/.ssh/id_github -q -P "$SSH_PASSPHRASE"
 
-
-
-
-
 echo "Git Configuration"
-
 git config --global user.name "$GIT_AUTHOR_NAME"
 git config --global user.email "$GIT_AUTHOR_EMAIL"
 git config --global core.editor vim
-
-ssh-keygen -t ed25519 -C "$GIT_AUTHOR_EMAIL"
-
