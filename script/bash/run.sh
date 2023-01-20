@@ -61,10 +61,13 @@ echo "## create repo folder ##"
 echo "########################"
 
 mkdir -p /tmp/{installdeb,installrun,installgit,installtar}
+mkdir -p $HOME/.ssh/github
 
-update
-upgrade -y
-install -y exa nmap net-tools git htop vim tree curl wget xclip openssh-server apt-transport-https ca-certificates gnupg software-properties-common
+apt update
+apt upgrade -y
+apt install -y exa nmap net-tools vagrant git htop vim tree curl wget xclip openssh-server apt-transport-https ca-certificates gnupg software-properties-common
+apt --fix-broken instal
+apt install -f
 
 echo "########################"
 echo "########################"
@@ -145,6 +148,8 @@ curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo 
 && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
 && sudo apt update \
 && sudo apt install gh -y
+gh auth login --web
+
 
 echo "####################################"
 echo "## Install podman buildah skopeo  ##"
@@ -167,6 +172,10 @@ echo "#########################"
 echo "##      Clone repo     ##"
 echo "#########################"
 cd $HOME/pro
+git config --global user.name tython.kraken.ubu
+git config --global user.email dczinil@gmail.com
+
+
 git clone git@github.com:dczinil/linux.git
 git clone git@github.com:dczinil/python.git
 git clone git@github.com:dczinil/docker.git
