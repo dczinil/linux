@@ -31,3 +31,6 @@ git config --global core.editor vim
 
 
 export PATH=$PATH:$HOME/pro/git-scripts
+
+#Oh-My-Bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"

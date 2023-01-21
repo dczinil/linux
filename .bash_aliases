@@ -138,6 +138,8 @@ alias gclone='git clone'
 alias gignore='touch .gitignore'
 # "gstatus" status repo
 alias gstatus='git status'
+# "forest" exec scripts git-scripts (jwiegley/git-scripts)
+alias git-forest='forest'
 
 # Find all Git repos in the current directory recursively
 # Note: Excludes hidden and temp directories
