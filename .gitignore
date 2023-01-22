@@ -13,3 +13,25 @@ replit.nix
 .vim/pluggend/*.vim
 script/bash/secrets.GITHUB_TOKEN
 .vim/%*
+#.oh-my-bash
+# custom files
+
+!/.oh-my-bash/custom/aliases/example.aliases.sh
+!/.oh-my-bash/custom/completions/example.completion.sh
+!/.oh-my-bash/custom/plugins/example/
+!/.oh-my-bash/custom/themes/example/
+!/.oh-my-bash/custom/example.sh
+/custom/
+
+# temp files directories
+/cache/
+/log/
+!/cache/.gitkeep
+!/log/.gitkeep
+# disabled files
+*.swp
+*.disabled
+/.oh-my-bash/.idea/
+*.tmp
+/dotfiles-kraken/git-scripts/git-merge-changelog
+.tmux/plugins/**

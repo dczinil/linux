@@ -43,6 +43,8 @@ alias ipexternal='wget -O - -q icanhazip.com && echo'
 alias untar='tar -xvf'
 # "nano" edit nano
 alias nano='nano --smarthome --multibuffer --const --autoindent'
+# "rm" delet
+alias rm='rm -rIf'
 # "maxproc" See the processes that consume the most
 # Add in negative the number of processes to review"
 alias maxproc='ps axuf | sort -nr -k3 | head '
@@ -98,6 +100,47 @@ elif [[ -x "$(command -v zypper)" ]]; then # SUSE
 	alias remove='sudo zypper rm'
 	alias autoremove='sudo zypper packages --orphaned'
 	alias search='sudo zypper se'
+fi
+#! bash oh-my-bash.module
+#  ---------------------------------------------------------------------------
+alias perm='stat --printf "%a %n \n "'      # perm: Show permission of target in number
+alias 000='chmod 000'                       # ---------- (nobody)
+alias 640='chmod 640'                       # -rw-r----- (user: rw, group: r, other: -)
+alias 644='chmod 644'                       # -rw-r--r-- (user: rw, group: r, other: -)
+alias 755='chmod 755'                       # -rwxr-xr-x (user: rwx, group: rx, other: x)
+alias 775='chmod 775'                       # -rwxrwxr-x (user: rwx, group: rwx, other: rx)
+alias mx='chmod a+x'                        # ---x--x--x (user: --x, group: --x, other: --x)
+alias ux='chmod u+x'                        # ---x------ (user: --x, group: -, other: -)
+#   ---------------------------------------
+#   8.  WEB DEVELOPMENT
+#   ---------------------------------------
+alias apacheEdit='sudo edit /etc/httpd/httpd.conf'      # apacheEdit:       Edit httpd.conf
+alias apacheRestart='sudo apachectl graceful'           # apacheRestart:    Restart Apache
+alias editHosts='sudo edit /etc/hosts'                  # editHosts:        Edit /etc/hosts file
+alias herr='tail /var/log/httpd/error_log'              # herr:             Tails HTTP error logs
+alias apacheLogs="less +F /var/log/apache2/error_log"   # Apachelogs:       Shows apache error logs
+#! bash oh-my-bash.module
+#  ---------------------------------------------------------------------------
+# Directory Listing aliases
+alias dir='ls -hFx'
+alias l.='ls -d .* --color=tty' # short listing, only hidden files - .*
+alias l='ls -lathF'             # long, sort by newest to oldest
+alias L='ls -latrhF'            # long, sort by oldest to newest
+alias la='ls -Al'               # show hidden files
+alias lc='ls -lcr'              # sort by change time
+alias lk='ls -lSr'              # sort by size
+alias lh='ls -lSrh'             # sort by size human readable
+alias lm='ls -al | more'        # pipe through 'more'
+alias lo='ls -laSFh'            # sort by size largest to smallest
+alias lr='ls -lR'               # recursive ls
+alias lt='ls -ltr'              # sort by date
+alias lu='ls -lur'              # sort by access time
+#   lr:  Full Recursive Directory Listing
+#   ------------------------------------------
+alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
+alias dud='du -d 1 -h'                      # Short and human-readable file listing
+alias duf='du -sh *'                        # Short and human-readable directory listing
+
 << 'Comment'
 ╔═╗╦  ╦╔═╗╔═╗  ╔═╗╦ ╦╔╦╗╦ ╦╔═╗╔╗╔
 ╠═╣║  ║╠═╣╚═╗  ╠═╝╚╦╝ ║ ╠═╣║ ║║║║
@@ -107,6 +150,8 @@ Comment
 alias vpy='python3 -m venv venv'
 # "avenv" Active virtual version
 alias avenv='source venv/bin/activate'
+# "pip3"
+#alias pip3='python3 -m pip'
 << 'Comment'
 ╔═╗╦  ╦╔═╗╔═╗  ╔═╗╦╔╦╗
 ╠═╣║  ║╠═╣╚═╗  ║ ╦║ ║ 
@@ -140,7 +185,6 @@ alias gignore='touch .gitignore'
 alias gstatus='git status'
 # "forest" exec scripts git-scripts (jwiegley/git-scripts)
 alias git-forest='forest'
-
 # Find all Git repos in the current directory recursively
 # Note: Excludes hidden and temp directories
 # You can find all git repos on the entire system using: locate .git | grep "/.git$"
@@ -160,3 +204,17 @@ alias dcleani='docker rmi image -f $(docker image ls -aq) 2> /dev/null && docker
 alias dcleana='docker rm -f $(docker ps -aq) 2> /dev/null && docker rmi image -f $(docker image ls -aq)  2> /dev/null && docker ps -aq && docker image ls -aq'
 # "dkilld" Kills all the detainees
 alias dkilld='docker rm $(docker ps --filter status=exited -q)'
+<< 'Comment'
+╔═╗╦  ╦╔═╗╔═╗  ╔╦╗╔═╗╦═╗╦═╗╔═╗╔═╗╔═╗╦═╗╔╦╗
+╠═╣║  ║╠═╣╚═╗   ║ ║╣ ╠╦╝╠╦╝╠═╣╠╣ ║ ║╠╦╝║║║
+╩ ╩╩═╝╩╩ ╩╚═╝   ╩ ╚═╝╩╚═╩╚═╩ ╩╚  ╚═╝╩╚═╩ ╩
+Comment
+# Aliases
+# (sorted alphabetically)
+
+alias t='terraform'
+alias tapply='terraform apply'
+alias tfmt='terraform fmt'
+alias tinit='terraform init'
+alias tplan='terraform plan'
+
