@@ -8,6 +8,17 @@
 mkdir -p $HOME/pro
 mkdir -p $HOME/.fonts
 
+cd $HOME/pro/
+git clone https://github.com/dczinil/linux.git
+git clone https://github.com/dczinil/pages.git
+git clone https://github.com/dczinil/vagrant.git
+git clone https://github.com/dczinil/ansible.git
+git clone https://github.com/dczinil/python.git
+git clone https://github.com/dczinil/dczinil.git
+git clone https://github.com/dczinil/git.git
+git clone https://github.com/dczinil/docker.git
+git clone https://github.com/dczinil/dczinil.github.io.git
+
 update
 upgrade -y
 install -y  exa nmap net-tools git htop vim tree curl \
@@ -54,9 +65,9 @@ source $HOME/oh-my-git/prompt.sh
 sudo ln -fs $HOME/pro/linux/dotfiles-kraken/.gitconfig $HOME/
 sudo ln -fs $HOME/pro/linux/dotfiles-kraken/git-completion.bash $HOME/
 sudo ln -fs $HOME/pro/linux/dotfiles-kraken/ $HOME/
-sudo ln -fs $HOME/pro/linux/dotfiles-kraken/.vim $HOME
-sudo ln -fs $HOME/pro/linux/dotfiles-kraken/.vimrc $HOME
-sudo ln -fs $HOME/pro/linux/dotfiles-kraken/.bash_aliases $HOME
+sudo ln -fs $HOME/pro/linux/dotfiles-kraken/.vim $HOME/
+sudo ln -fs $HOME/pro/linux/dotfiles-kraken/.vimrc $HOME/
+sudo ln -fs $HOME/pro/linux/dotfiles-kraken/.bash_aliases $HOME/
 
 #NVM
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
@@ -122,6 +133,6 @@ sudo apt update
 sudo apt install -y terraform
         
         ##CentOS/RHEL/Fedora
-sudo dnf install -y dnf-plugins-core
-sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
-sudo dnf -y install terraform
+#sudo dnf install -y dnf-plugins-core
+#sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
+#sudo dnf -y install terraform
