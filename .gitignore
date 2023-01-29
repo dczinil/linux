@@ -1,11 +1,9 @@
 README.md
 .replit
 replit.nix
-dotfiles-kraken/.vim/pluggend/*
+dotfiles-kraken/.vim/plugged/*
 script/bash/secrets.GITHUB_TOKEN
-.vim/%*
-#.oh-my-bash
-# custom files
+
 
 !/.oh-my-bash/custom/aliases/example.aliases.sh
 !/.oh-my-bash/custom/completions/example.completion.sh
