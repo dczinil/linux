@@ -24,10 +24,8 @@ alias editalias='vim ~/.bash_aliases && sourcea'
 alias showa='cat ~/.bash_aliases | grep "#"'
 # "cpkey" copy key file
 alias cpkey='xclip -selection clipboard <'
-# "la" only see hidden files
-alias la='find . -exec ls --color=auto {} \; -name ".*" -maxdepth 1 -type d 2> /dev/null'
-# "find" find color
-alias find='find -exec ls --color=auto {} \;'
+# "only" only see hidden files
+alias only='find . -exec ls --color=auto {} \; -name ".*" -maxdepth 1 -type d 2> /dev/null'
 # "" Go back directories
 alias ..='\cd ..'
 alias ...='\cd ../..'
