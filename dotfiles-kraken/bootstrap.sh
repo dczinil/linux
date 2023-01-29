@@ -19,13 +19,12 @@ git clone https://github.com/dczinil/git.git
 git clone https://github.com/dczinil/docker.git
 git clone https://github.com/dczinil/dczinil.github.io.git
 
-update
-upgrade -y
 install -y  exa nmap net-tools git htop vim tree curl \
             wget xclip openssh-server apt-transport-https \
             ca-certificates gnupg software-properties-common \
             vagrant podman buildah skopeo python3-argcomplete
-upgrade -y
+
+
 
 SSH_PASSPHRASE=$1
 #Git credentials
@@ -58,8 +57,7 @@ cp ~/.fonts/* /usr/share/fonts/truetype
 fc-cache -fv ~/.fonts
 
 #.oh-my-git
-git clone https://github.com/arialdomartini/oh-my-git.git ~/.oh-my-git
-source $HOME/oh-my-git/prompt.sh
+git clone https://github.com/arialdomartini/oh-my-git.git ~/.oh-my-git && echo source ~/.oh-my-git/prompt.sh >> ~/.bashrc
 
 #dotfiles local
 sudo ln -fs $HOME/pro/linux/dotfiles-kraken/.gitconfig $HOME/
