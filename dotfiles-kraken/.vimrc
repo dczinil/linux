@@ -31,8 +31,11 @@ set expandtab
 ""Style
 set t_Co=256
 colorscheme gruvbox 
-let g:gruvbox_contrat_dark = "hard"
+set bg=dark
+"let g:gruvbox_contrat_dark = "hard"
 highlight Normal ctermbg=NONE
+"let g:lightline = {}
+"let g:lightline.colorscheme = 'gruvbox'
 set laststatus=2
 let NERDTreeQuitOnOpen=1 ""Close NerdTree when opening a new file
 let mapleader=" "
@@ -56,7 +59,10 @@ let g:closetag_emptyTags_caseSensitive = 1
 let g:closetag_shortcut = '>'
 "Add > at current position without closing the current tag, default is ''
 let g:closetag_close_shortcut = '<leader>>'
-
+"""Golang
+"Enable lsp for go by using gopls
+let g:completor_filetype_map = {}
+let g:completor_filetype_map.go = {'ft': 'lsp', 'cmd': 'gopls -remote=auto'}
 set noshowmode
 set sw=2
 set autoindent
