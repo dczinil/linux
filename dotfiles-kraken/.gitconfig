@@ -1,0 +1,49 @@
+[user]
+	email = dczinil@gmail.com
+	name = dczinil.tython
+[core]
+	editor = vim
+[init]
+	defaultBranch = master
+[alias]
+	a = add
+	al = aliases # not a Git builtin; `aliases` is my `bin/git-alias`.
+	ap = add --patch
+	c = commit
+	ca = commit --all
+	cam = commit --amend
+	caam = commit --all --amend
+	cl = clone --recurse-submodules
+	co = checkout
+	cob = checkout -b
+	cop = checkout --patch
+	cS = commit --no-gpg-sign
+	d = diff
+	ds = diff --staged
+	f = fetch
+	ig = edit-ignore # not a Git builtin either
+	l = log
+	lp = log --patch
+	ls = log --stat
+	nx = annex
+	nxa = annex add
+	p = push
+	rb = rebase
+	rbc = rebase --continue
+	rbi = rebase --interactive
+	s = status
+	# Needs to be a shell alias (!git) in order to expand $HOME :(
+	sshpushes = !git config --file $HOME/.gitconfig-local url.ssh://github.com/.pushInsteadOf https://github.com/
+	st = stash
+	stp = stash pop
+	u = pull
+	ur = pull --rebase --autostash
+	# Disable commit signing for a single repository.
+	nosign = config commit.gpgSign false
+	# Email addresses (private and business).
+	scy = config user.email dczinil.tython
+	tw = config user.email dczinil@gmail.com
+	tree = "forest --pretty=format:\"%C(red)%h %C(magenta)(%ar) %C(blue)%an %C(reset)%s\" --style=15 --reverse"
+	lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+	lg = !"git lg1"
