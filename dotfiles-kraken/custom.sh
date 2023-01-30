@@ -6,15 +6,16 @@ fi
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+        if [ -f /usr/share/bash-completion/bash_completion ]; then
+                . /usr/share/bash-completion/bash_completion
+        elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+        fi
 fi
+
 #Git Auto-Completion
 if [[ -f "$HOME/git-completion.bash"  ]]; then
-          source "$HOME/git-completion.bash"
+        source "$HOME/git-completion.bash"
 fi
 # Alias and bookmark the web folder (try to guess it's location)
 # This will NOT overwrite a "web" alias previously definded in .bash_aliases
@@ -45,7 +46,7 @@ export LS_COLORS="$(vivid generate molokai)"
 #PS1
 export PS1='\[\e[0;95m\][\[\e[0;38;5;51m\]\u \[\e[0;91m\]\W \[\e[0;5;38;5;51m\]$(git branch 2>/dev/null | grep '"'"'^*'"'"' | colrm 1 2)\[\e[0;95m\]]\[\e[0m\]:\[\e[0;5m\]🚀 \[\e[0m\]'
 #Git-Scripts
-export PATH=$PATH:$HOME/pro/linux/dotfiles-kraken/git-script
+export PATH=$PATH:$HOME/pro/git-script
 #Golang
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
