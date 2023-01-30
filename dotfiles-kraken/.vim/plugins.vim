@@ -12,8 +12,8 @@ Plug 'itchyny/lightline.vim'
 
 ""Themes
 Plug 'morhetz/gruvbox'
-Plug 'itchyny/lightline-gruvbox.vim'
-
+"Plug 'itchyny/lightline-gruvbox.vim'
+"Plug 'shinchu/lightline-gruvbox.vim'
 ""Tree
 Plug 'scrooloose/nerdtree'
 
@@ -45,8 +45,7 @@ Plug 'yggdroot/indentline'
 Plug 'scrooloose/nerdcommenter'
 ""Developers
 ""Golang
-Plug 'fatih/vim-g', {'do': ':GoUpdateBinaries' }
-
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 ""Git
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
