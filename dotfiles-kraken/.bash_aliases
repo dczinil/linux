@@ -47,6 +47,14 @@ alias untar='tar -xvf'
 alias nano='nano --smarthome --multibuffer --const --autoindent'
 # "rm" delet
 alias rm='rm -rIf'
+# "pro"
+alias pro='cd ~/pro'
+# "scriptbash"
+alias scriptbash='cd ~/pro/linux/script/bash'
+# "scriptpython"
+alias scriptpython='cd ~/pro/linux/script/python'
+# "scriptgo"
+alias scriptgo='cd ~/pro/linux/script/golang'
 # "maxproc" See the processes that consume the most
 # Add in negative the number of processes to review"
 alias maxproc='ps axuf | sort -nr -k3 | head '
@@ -142,7 +150,35 @@ alias lu='ls -lur'              # sort by access time
 alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
 alias dud='du -d 1 -h'                      # Short and human-readable file listing
 alias duf='du -sh *'                        # Short and human-readable directory listing
-
+# Archives
+function untar {
+  if [ -z "$1" ]; then
+    echo "Usage: untar <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz>"
+  else
+    if [ -f $1 ]; then
+      case $1 in
+        *.tar.bz2)   tar xvjf $1    ;;
+        *.tar.gz)    tar xvzf $1    ;;
+        *.tar.xz)    tar xvJf $1    ;;
+        *.lzma)      unlzma $1      ;;
+        *.bz2)       bunzip2 $1     ;;
+        *.rar)       unrar x -ad $1 ;;
+        *.gz)        gunzip $1      ;;
+        *.tar)       tar xvf $1     ;;
+        *.tbz2)      tar xvjf $1    ;;
+        *.tgz)       tar xvzf $1    ;;
+        *.zip)       unzip $1       ;;
+        *.Z)         uncompress $1  ;;
+        *.7z)        7z x $1        ;;
+        *.xz)        unxz $1        ;;
+        *.exe)       cabextract $1  ;;
+        *)           echo "extract: '$1' - unknown archive method" ;;
+      esac
+    else
+      echo "$1 - file does not exist"
+    fi
+  fi
+}
 << 'Comment'
 ╔═╗╦  ╦╔═╗╔═╗  ╔═╗╦ ╦╔╦╗╦ ╦╔═╗╔╗╔
 ╠═╣║  ║╠═╣╚═╗  ╠═╝╚╦╝ ║ ╠═╣║ ║║║║
@@ -186,7 +222,7 @@ alias gignore='touch .gitignore'
 # "gstatus" status repo
 alias gstatus='git status'
 # "forest" exec scripts git-scripts (jwiegley/git-scripts)
-alias git-forest='forest'
+alias forest='/home/sysadmin/pro/git-scripts/git-forest'
 # Find all Git repos in the current directory recursively
 # Note: Excludes hidden and temp directories
 # You can find all git repos on the entire system using: locate .git | grep "/.git$"
