@@ -41,12 +41,18 @@ function ver() {
         fi
         cat /etc/*-release 2> /dev/null
 }
+#Vagrant Default Provider
+#vmware_desktop
+#docker
+#hyperv
+#virtualbox
+export VAGRANT_DEFAULT_PROVIDER=virtualbox
 #Vivid
 export LS_COLORS="$(vivid generate molokai)"
 #PS1
 export PS1='\[\e[0;95m\][\[\e[0;38;5;51m\]\u \[\e[0;91m\]\W \[\e[0;5;38;5;51m\]$(git branch 2>/dev/null | grep '"'"'^*'"'"' | colrm 1 2)\[\e[0;95m\]]\[\e[0m\]:\[\e[0;5m\]🚀 \[\e[0m\]'
 #Git-Scripts
-export PATH=$PATH:$HOME/pro/git-script
+export PATH=$PATH:$HOME/pro/git-scripts
 #Golang
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
