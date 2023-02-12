@@ -82,7 +82,9 @@ python3 -m pip install --upgrade pip
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 get-pip.py --user
 python3 -m pip install --user ansible
-activate-global-python-argcomplete3 --user
+python3 -m pip install --user argcomplete
+sudo activate-global-python-argcomplete --user
+ansible-config init --disabled -t all > $HOME/pro/ansible.cfg
 #Docker
 sudo dnf -y install dnf-plugins-core
 sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
