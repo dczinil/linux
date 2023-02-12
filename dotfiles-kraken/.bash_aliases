@@ -257,4 +257,5 @@ alias tapply='terraform apply'
 alias tfmt='terraform fmt'
 alias tinit='terraform init'
 alias tplan='terraform plan'
-
+#Ansible
+alias invAnsible='vim $HOME/.hosts_ansible'
