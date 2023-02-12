@@ -3,7 +3,7 @@
 
 sudo dnf check
 sudo dnf update -y
-sudo dnf install exa nmap packer gh git htop vim tree curl wget xclip openssl openssh-server ca-certificates gnupg vagrant vagrant-libvirt podman buildah skopeo python3-pip 2>/dev/null
+sudo dnf install exa nmap packer gh git htop vim tree curl wget xclip openssl openssh-server ca-certificates gnupg vagrant vagrant-libvirt podman buildah skopeo python3-pip gnome-tweaks 2>/dev/null
 sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 #Virtualbox
 src='https://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo'
@@ -60,6 +60,8 @@ sudo ln -fs $HOME/pro/linux/dotfiles-kraken/git-completion.bash $HOME/
 sudo ln -fs $HOME/pro/linux/dotfiles-kraken/.vim $HOME/
 sudo ln -fs $HOME/pro/linux/dotfiles-kraken/.vimrc $HOME/
 sudo ln -fs $HOME/pro/linux/dotfiles-kraken/.bash_aliases $HOME/
+sudo ln -fs $HOME/pro/linux/dotfiles-kraken/ansible.cfg
+sudo ln -fs $HOME/pro/linux/dotfiles-kraken/.hosts_ansible
 tee -a ~/.bashrc <<EOF
 if [ -d /etc/profile.d ]; then
   for i in /etc/profile.d/custom.sh; do
@@ -84,7 +86,7 @@ python3 get-pip.py --user
 python3 -m pip install --user ansible
 python3 -m pip install --user argcomplete
 sudo activate-global-python-argcomplete --user
-ansible-config init --disabled -t all > $HOME/pro/ansible.cfg
+#ansible-config init --disabled -t all > $HOME/ansible.cfg
 #Docker
 sudo dnf -y install dnf-plugins-core
 sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
