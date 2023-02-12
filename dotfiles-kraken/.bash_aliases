@@ -25,8 +25,10 @@ alias showa='cat ~/.bash_aliases | grep "#"'
 # "cpkey" copy key file
 alias cpkey='xclip -selection clipboard <'
 # "only" only see hidden files
-alias only='find . -exec ls --color=auto {} \; -name ".*" -maxdepth 1 -type d 2> /dev/null'
-# "" Go back directories
+alias only='find . -name ".*" -maxdepth 1 -exec ls --color=auto -d {} \;  2>/dev/null'
+alias onlyd='find . -name ".*" -maxdepth 1 -type d -exec ls -d --color=auto {} \;  2>/dev/null'
+alias onlyf='find . -name ".*" -maxdepth 1 -type f -exec ls -d --color=auto {} \;  2>/dev/null'
+## "" Go back directories
 alias ..='\cd ..'
 alias ...='\cd ../..'
 alias ....='\cd ../../..'
