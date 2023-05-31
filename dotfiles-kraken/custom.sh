@@ -67,3 +67,7 @@ export PATH=$PATH:$HOME/.local/bin/
 source /home/sysadmin/.oh-my-git/prompt.sh
 #Cargo
 source $HOME/.cargo/env
+#env system
+if [[ -f "/home/sysadmin/pro/k8s-vag-ansi/ansible/fileconf/hosts"  ]]; then
+        source "/home/sysadmin/pro/k8s-vag-ansi/ansible/fileconf/hosts"
+fi
