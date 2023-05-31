@@ -1,5 +1,7 @@
-nmap <Leader>s <Plug>(easymotion-s2)
+nmap <Leader>nts :NERDTreeToggle<CR>
 nmap <Leader>nt :NERDTreeFind<CR>
+
+nmap <Leader>s <Plug>(easymotion-s2)
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>
 nmap <Leader>wq :wq<CR>
