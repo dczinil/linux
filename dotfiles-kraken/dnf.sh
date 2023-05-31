@@ -31,7 +31,9 @@ echo "Git Configuration"
 git config --global user.name "$GIT_AUTHOR_NAME"
 git config --global user.email "$GIT_AUTHOR_EMAIL"
 git config --global core.editor vim
-
+#nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+#pro repo
 cd $HOME/pro/
 git clone git@github.com:dczinil/linux.git
 git clone git@github.com:dczinil/pages.git
@@ -80,6 +82,10 @@ go version
 sudo rm -rf go1.19.4.linux-amd64.tar.gz
 #Python3-pip
 python3 -m pip install --upgrade pip
+#RVM Ruby and Rails
+gpg2 --keyserver keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+curl -sSL https://get.rvm.io | bash -s stable
+curl -sSL https://get.rvm.io | bash -s stable --rails
 #Ansible
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 get-pip.py --user
@@ -97,7 +103,6 @@ sudo systemctl start docker
 sudo dnf install -y dnf-plugins-core
 sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
 sudo dnf -y install terraform
-
 #END
 echo "ready paste the public key into https://github.com/settings/keys"
 echo "do not copy the url, type it"
