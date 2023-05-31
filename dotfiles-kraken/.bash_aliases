@@ -51,6 +51,7 @@ alias nano='nano --smarthome --multibuffer --const --autoindent'
 alias rm='rm -rIf'
 # "pro"
 alias pro='cd ~/pro'
+alias k8sv='cd ~/pro/k8s-vag-ansi/'
 # "scriptbash"
 alias scriptbash='cd ~/pro/linux/script/bash'
 # "scriptpython"
@@ -259,3 +260,18 @@ alias tinit='terraform init'
 alias tplan='terraform plan'
 #Ansible
 alias invAnsible='vim $HOME/.hosts_ansible'
+#VBoxManage
+alias vb='VBoxManage'
+
+alias provv='vagrant up --provision'
+alias delevv='rm -rf .vagrant/'
+alias destvv='vagrant destroy -f'
+alias sshvv='vagrant ssh'
+#   ---------------------------------------
+#                 VBoxManage
+#   ---------------------------------------
+function killvms() {
+	  VBoxManage list runningvms | awk '{print $2;}' | xargs -I vmid VBoxManage controlvm vmid poweroff
+		  VBoxManage list vms | awk '{print $2;}' | xargs -I vmid VBoxManage unregistervm --delete vmid
+			
+}
