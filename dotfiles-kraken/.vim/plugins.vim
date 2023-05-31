@@ -43,9 +43,11 @@ Plug 'easymotion/vim-easymotion'
 Plug 'mhinz/vim-signify'
 Plug 'yggdroot/indentline'
 Plug 'scrooloose/nerdcommenter'
+"Tools DevOps
+Plug 'pearofducks/ansible-vim', { 'do': './UltinSnips/generate.sh' }
 ""Developers
 ""Golang
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', {'tag': '*'}
 ""Git
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -55,5 +57,6 @@ Plug 'easymotion/vim-easymotion'
 
 ""file
 Plug 'scrooloose/nerdtree'
+
 
 call plug#end()
