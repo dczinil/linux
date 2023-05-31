@@ -37,9 +37,8 @@ highlight Normal ctermbg=NONE
 "let g:lightline = {}
 "let g:lightline.colorscheme = 'gruvbox'
 set laststatus=2
-let NERDTreeQuitOnOpen=1 ""Close NerdTree when opening a new file
 let mapleader=" "
-      ""Vim-tag
+""Vim-tag
 "filenames like *.xml, *.html, *.xhtml, ...
 "These are the file extensions where this plugin is enabled.
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
@@ -60,6 +59,31 @@ let g:closetag_shortcut = '>'
 "Add > at current position without closing the current tag, default is ''
 let g:closetag_close_shortcut = '<leader>>'
 """Golang
+"--------------------
+" scrooloose/nerdtree
+" -------------------
+let NERDTreeShowBookmarks=1
+let NERDTreeIgnore=['\\.swo$', '\\.swp$', '\\.git']
+let NERDTreeChDirMode=0
+let NERDTreeQuitOnOpen=1 ""Close NerdTree when opening a new file
+let NERDTreeShowhidden=1
+let NERDTreeKeepTreeInNewTab=1
+"---------------------------
+"Xuyuanp/nerdtree-git-plugin
+"---------------------------
+" Override the default symbols
+let g:NERDTreeIndicatorMapCustom ={
+  \ 'Modified'  : 'M',
+  \ 'Staged'    : 'S',
+  \ 'Untracked' : '*',
+  \ 'Renamed'   : 'R',
+  \ 'Unmerged'  : 'U',
+  \ 'Deleted'   : '!',
+  \ 'Dirty'     : 'D',
+  \ 'Clean'     : 'C',
+  \ 'Ignored'   : 'I',
+  \ 'Unknown'   : '?'
+  \ }
 "Enable lsp for go by using gopls
 let g:completor_filetype_map = {}
 let g:completor_filetype_map.go = {'ft': 'lsp', 'cmd': 'gopls -remote=auto'}
@@ -68,6 +92,17 @@ set sw=2
 set autoindent
 set relativenumber
 set clipboard=unnamedplus
+"Tools DevOps
+let g:ansible_unindent_after_newline = 1
+let g:ansible_yamlKeyName = 'yamlkey'
+let g:ansible_attribute_highlight = "ob"
+let g:ansible_name_highlight = 'd'
+let g:ansible_extra_keywords_highlight = 1
+let g:ansible_extra_keywords_highlight_group = 'Statement'
+let g:ansible_normal_keywords_highlight = 'Constant'
+let g:ansible_loop_keywords_highlight = 'Constant'
+let g:ansible_template_syntaxes = { '*.rb.j2': 'ruby' }
+let g:ansible_ftdetect_filename_regex = '\v(playbook|site|main|local|requirements)\.ya?ml$'
 so ~/.vim/plugins.vim
 so ~/.vim/maps.vim
 if has("autocmd")
