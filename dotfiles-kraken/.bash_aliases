@@ -252,7 +252,6 @@ alias dkilld='docker rm $(docker ps --filter status=exited -q)'
 Comment
 # Aliases
 # (sorted alphabetically)
-
 alias t='terraform'
 alias tapply='terraform apply'
 alias tfmt='terraform fmt'
@@ -260,18 +259,78 @@ alias tinit='terraform init'
 alias tplan='terraform plan'
 #Ansible
 alias invAnsible='vim $HOME/.hosts_ansible'
-#VBoxManage
-alias vb='VBoxManage'
-
-alias provv='vagrant up --provision'
-alias delevv='rm -rf .vagrant/'
 alias destvv='vagrant destroy -f'
-alias sshvv='vagrant ssh'
 #   ---------------------------------------
 #                 VBoxManage
 #   ---------------------------------------
+# "vbm" cli VBoxManage
+alias vbm='VBoxManage'
+# "vbmlr" VBoxManage list Runningsvm
+alias vbm='vbm list runningvms'
 function killvms() {
 	  VBoxManage list runningvms | awk '{print $2;}' | xargs -I vmid VBoxManage controlvm vmid poweroff
 		  VBoxManage list vms | awk '{print $2;}' | xargs -I vmid VBoxManage unregistervm --delete vmid
-			
-}
+		}
+#   ---------------------------------------
+#                   Vagrant
+#   ---------------------------------------
+# "vdd" delet vagrant directory
+alias vdd='rm -rf .vagrant/'
+# "vgi" vagrant start
+alias vgi='vagrant init'
+# "vup" Vagrant up
+alias vup='vagrant up'
+# "vupp" vagrant up provision
+alias vupp='vagrant up --provision'
+# "vupnp" vagrant up no provision
+alias vupnp='vagrant up --no-provision'
+# "vd" Vagrant destroy
+alias vd='vagrant destroy'
+# "vdf" vagrant destroy force
+alias vdf='vagrant destroy -f'
+# "vssh" vagrant ssh
+alias vssh='vagrant ssh'
+# "vsshc" vagrant ssh-config
+alias vsshc='vagrant ssh-config'
+# "vrdp" vagrant rdp
+alias vrdp='vagrant rdp'
+# "vh" vagrant halt
+alias vh='vagrant halt'
+# "vssp" vagrant suspend
+alias vssp='vagrant suspend'
+# "vst" vagrant status
+alias vst='vagrant status'
+# "vre" vagrant resume
+alias vre='vagrant resume'
+# "vgs" vagrant global status 
+alias vgs='vagrant global-status'
+# "vpr" vagrant provision
+alias vpr='vagrant provision'
+# "vr" vagrant reload
+alias vr='vagrant reload'
+# "vrp" vagrant reload provision
+alias vrp='vagrant reload --provision'
+# "vp" vagrant push 'code'
+alias vp='vagrant push'
+# "vsh" vagrant share
+alias vsh='vagrant share'
+# "vbs" vagrant box add
+alias vba='vagrant box add'
+# "vbr" vagrant box remove 'NAME-BOX'
+alias vbr='vagrant box remove'
+# "vpru" vagrant prune 'This command removes old versions of installed boxes.'
+alias vpru='vagrant box prune'
+# "vbl" vagrant box list
+alias vbl='vagrant box list'
+# "vbo" vagrant box outdated 'This command tells you whether or not the box you are using in your current Vagrant environment is outdated.'
+alias vbo='vagrant box outdated'
+# "vbu" vagrant box update
+alias vbu='vagrant box update'
+# "vpli" vagrant plugin intall 'NAME-PLUGIN'
+alias vpli='vagrant plugin install'
+# "vpll" vagrant plugin list
+alias vpll='vagrant plugin list'
+# "vplun" vagrant plugin uninstall 'NAME-PLUGIN'
+alias vplun='vagrant plugin uninstall'
+# "vplu" vagrant plugin updatr
+alias vplu='vagrant plugin update'
