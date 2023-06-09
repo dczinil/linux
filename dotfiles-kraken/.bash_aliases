@@ -127,9 +127,9 @@ alias ux='chmod u+x'                        # ---x------ (user: --x, group: -, o
 #   ---------------------------------------
 #   8.  WEB DEVELOPMENT
 #   ---------------------------------------
-alias apacheEdit='sudo edit /etc/httpd/httpd.conf'      # apacheEdit:       Edit httpd.conf
+alias apacheEdit='sudo vim /etc/httpd/httpd.conf'      # apacheEdit:       Edit httpd.conf
 alias apacheRestart='sudo apachectl graceful'           # apacheRestart:    Restart Apache
-alias editHosts='sudo edit /etc/hosts'                  # editHosts:        Edit /etc/hosts file
+alias editHosts='sudo vim /etc/hosts'                  # editHosts:        Edit /etc/hosts file
 alias herr='tail /var/log/httpd/error_log'              # herr:             Tails HTTP error logs
 alias apacheLogs="less +F /var/log/apache2/error_log"   # Apachelogs:       Shows apache error logs
 #! bash oh-my-bash.module
@@ -182,6 +182,134 @@ function untar {
     fi
   fi
 }
+# function "gitls" check status of git repository
+function gitls {
+	git status --porcelain | \
+		awk 'BEGIN {FS=" "}
+		{
+			xstat = substr($0, 1, 1);
+			ystat = substr($0, 2, 1);
+			f = substr($0, 4);
+			ri = index(f, " -> ");
+			if (ri > 0) f = substr(f, 1, ri);
+			if (xstat == " " && ystat ~ "M|D") stat = "not_updated";
+			else if (xstat == "M" && ystat ~ " |M|D") stat = "updated_in_index";
+			else if (xstat == "A" && ystat ~ " |M|D") stat = "added_to_index";
+			else if (xstat == "D" && ystat ~ " |M") stat = "deleted_from_index";
+			else if (xstat == "R" && ystat ~ " |M|D") stat = "renamed_in_index";
+			else if (xstat == "C" && ystat ~ " |M|D") stat = "copied_in_index";
+			else if (xstat ~ "M|A|R|C" && ystat == " ") stat = "index_and_work_tree_matches";
+			else if (xstat ~ " |M|A|R|C" && ystat == "M") stat = "work_tree_changed_since_index";
+			else if (xstat ~ " |M|A|R|C" && ystat == "D") stat = "deleted_in_work_tree";
+			else if (xstat == "D" && ystat == "D") stat = "unmerged,both_deleted";
+			else if (xstat == "A" && ystat == "U") stat = "unmerged,added_by_us";
+			else if (xstat == "U" && ystat == "D") stat = "unmerged,deleted_by_them";
+			else if (xstat == "U" && ystat == "A") stat = "unmerged,added_by_them";
+			else if (xstat == "D" && ystat == "U") stat = "unmerged,deleted_by_us";
+			else if (xstat == "A" && ystat == "A") stat = "unmerged,both_added";
+			else if (xstat == "U" && ystat == "U") stat = "unmerged,both_modified";
+			else if (xstat == "?" && ystat == "?") stat = "untracked";
+			else if (xstat == "!" && ystat == "!") stat = "ignored";
+			else stat = "unknown_status";
+			print f "   " stat;
+		}' | \
+		column -t -s "  " | "$PAGER"
+}
+# List folders recursively in a tree
+if [[ -x "$(command -v tree)" ]]; then
+	alias treed='\tree -CAFd'
+fi
+#######################################################
+# grc Generic Colouriser
+# Link: https://github.com/garabik/grc
+#######################################################
+
+_SKIP_GRC=false
+
+		if [[ $_SKIP_GRC = false ]] && [[ -x "$(command -v grc)" ]]; then
+			# If grc Generic Colouriser is installed
+			# Link: https://github.com/garabik/grc
+			alias ll='grc ls -l --all --classify --group-directories-first --human-readable --color=always'
+		else
+			# Use standard long listing format
+			alias ll='llcolor'
+		fi
+	fi
+else
+	alias ls='ls -aFh --color=always'     # do add built-in colors to file types
+	alias ll='ls -Fls'                    # long listing
+	alias labc='ls -lap'                  # sort alphabetically
+	alias lx='ll -laXBh'                  # sort by extension
+	alias lk='ll -laSrh'                  # sort by size
+	alias lt='ll -latrh'                  # sort by date
+	alias lc='ll -lacrh'                  # sort by change time
+	alias lu='ll -laurh'                  # sort by access time
+	alias new='ls -latr | tail -10 | tac' # list recently created/updated files
+	alias lw='ls -xAh'                    # wide listing format
+	alias lm='ll -alh | \less -S'         # pipe through less
+	alias lr='ls -lRh'                    # recursive ls
+	alias l.='ll -d .*'                   # show hidden files
+	alias lfile="ls -l | egrep -v '^d'"      # files only
+	alias ldir="ls -la | egrep '^d'"      # directories only
+fi
+
+if [[ $_SKIP_GRC = false ]] && [[ -x "$(command -v grc)" ]]; then
+	GRC_ALIASES=true
+	if [[ -f "$HOME/.local/bin/grc.sh" ]]; then
+		source ~/.local/bin/grc.sh
+	elif [[ -f "/etc/profile.d/grc.sh" ]]; then
+		source /etc/profile.d/grc.sh
+	elif [[ -f "/etc/grc.sh" ]]; then
+		source /etc/grc.sh
+	else
+		GRC="$(which grc)"
+		if tty -s && [ -n "$TERM" ] && [ "$TERM" != dumb ] && [ -n "$GRC" ]; then
+			alias as='colourify as'
+			alias blkid='colourify blkid'
+			alias colourify="$GRC -es"
+			alias configure='colourify ./configure'
+			if [[ "$(type -t df)" != 'alias' ]]; then alias df='colourify df -khT'; fi
+			if [[ "$(type -t diff)" != 'alias' ]]; then alias diff='colourify diff'; fi
+			alias dig='colourify dig'
+			alias docker-compose='colourify docker-compose'
+			alias docker-machine='colourify docker-machine'
+			alias docker='colourify docker'
+			alias du='colourify du'
+			#alias env='colourify env'
+			alias fdisk='colourify fdisk'
+			alias findmnt='colourify findmnt'
+			alias free='colourify free -m'
+			alias g++='colourify g++'
+			alias gas='colourify gas'
+			alias gcc='colourify gcc'
+			alias getsebool='colourify getsebool'
+			alias head='colourify head'
+			alias id='colourify id'
+			alias ifconfig='colourify ifconfig'
+			alias ip='colourify ip'
+			alias iptables='colourify iptables'
+			alias journalctl='colourify journalctl'
+			alias kubectl='colourify kubectl'
+			if [[ "$(type -t ld)" != 'alias' ]]; then alias ld='colourify ld'; fi
+			alias lsblk='colourify lsblk --fs --perms'
+			alias lsof='colourify lsof'
+			alias lspci='colourify lspci'
+			alias m='colourify mount'
+			alias make='colourify make'
+			alias mount='colourify mount'
+			alias mtr='colourify mtr'
+			alias netstat='colourify netstat'
+			alias ping='colourify ping -c 5'
+			alias ps='colourify ps auxf'
+			alias semanage='colourify semanage'
+			alias sockstat='colourify sockstat'
+			alias ss='colourify ss'
+			alias tail='colourify tail'
+			alias traceroute6='colourify traceroute6'
+			alias traceroute='colourify traceroute'
+		fi
+	fi
+fi
 << 'Comment'
 ╔═╗╦  ╦╔═╗╔═╗  ╔═╗╦ ╦╔╦╗╦ ╦╔═╗╔╗╔
 ╠═╣║  ║╠═╣╚═╗  ╠═╝╚╦╝ ║ ╠═╣║ ║║║║
