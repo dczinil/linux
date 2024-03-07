@@ -3,7 +3,7 @@
 #<!------------------------------!>#
 #     Create Directory Basic
 #<!------------------------------!>#
-mkdir -p $HOME/{.local{bin},local{bin},bin,.config,.bash_completion.d,pro,.fonts/{Droid-Sans-Mono,Inconsolata,Source-Code-Pro},go/{bin,pkg,src}}
+mkdir -p $HOME/{.local/{bin},local/{bin},bin,.config,.bash_completion.d,pro,.fonts/{Droid-Sans-Mono,Inconsolata,Source-Code-Pro},go/{bin,pkg,src}}
 mkdir -p /etc/ansible
 #<!-----------------!>#
 #     UPDATE OS
