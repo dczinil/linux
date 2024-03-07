@@ -8,6 +8,8 @@ comment
 ╠═╣║  ║╠═╣╚═╗  ║  ║║║║║ ║╔╩╦╝
 ╩ ╩╩═╝╩╩ ╩╚═╝  ╩═╝╩╝╚╝╚═╝╩ ╚═
 Comment
+#pathssh
+alias keyf='/mnt/c/Users/DCASTILLO/OneDrive - Seguros el Potosí, S.A/Documentos/.ssh/id_FortiOS.pub'
 # Clear terminal
 alias cls='clear'
 # "sourcea" Update file
@@ -226,7 +228,7 @@ fi
 
 _SKIP_GRC=false
 
-		if [[ $_SKIP_GRC = false ]] && [[ -x "$(command -v grc)" ]]; then
+		if [[ "$_SKIP_GRC" = false ]] && command -v grc >/dev/null 2>&1; then
 			# If grc Generic Colouriser is installed
 			# Link: https://github.com/garabik/grc
 			alias ll='grc ls -l --all --classify --group-directories-first --human-readable --color=always'
@@ -234,8 +236,7 @@ _SKIP_GRC=false
 			# Use standard long listing format
 			alias ll='llcolor'
 		fi
-	fi
-else
+
 	alias ls='ls -aFh --color=always'     # do add built-in colors to file types
 	alias ll='ls -Fls'                    # long listing
 	alias labc='ls -lap'                  # sort alphabetically
@@ -251,7 +252,6 @@ else
 	alias l.='ll -d .*'                   # show hidden files
 	alias lfile="ls -l | egrep -v '^d'"      # files only
 	alias ldir="ls -la | egrep '^d'"      # directories only
-fi
 
 if [[ $_SKIP_GRC = false ]] && [[ -x "$(command -v grc)" ]]; then
 	GRC_ALIASES=true
