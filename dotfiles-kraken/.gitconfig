@@ -49,3 +49,5 @@
 	lg = !"git lg1"
 [color]
 	ui = auto
+[credential "https://github.com"]
+	dczinil = dczinil@gmail.com
