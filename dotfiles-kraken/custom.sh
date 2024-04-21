@@ -5,18 +5,16 @@ fi
 #<!--------------------!>#
 #     bash completion
 #<!--------------------!>#
-if [ -e $HOME/.bash_completion.d]; then
-				source $HOME/.bash_completion.d/*
-fi
-if [[ -f "$HOME/git-completion.bash"  ]]; then
-        source "$HOME/.bash_completion.d/git-completion.bash"
-fi
-if ! shopt -oq posix; then
-        if [ -f /usr/share/bash-completion/bash_completion ]; then
-                . /usr/share/bash-completion/bash_completion
-        elif [ -f /etc/bash_completion ]; then
-        . /etc/bash_completion
-        
+ if [[ -f "$HOME/git-completion.bash"  ]]; then
+         source "$HOME/.bash_completion.d/git-completion.bash"
+ fi
+ if ! shopt -oq posix; then
+         if [ -f /usr/share/bash-completion/bash_completion ]; then
+                 . /usr/share/bash-completion/bash_completion
+         elif [ -f /etc/bash_completion ]; then
+         . /etc/bash_completion
+         fi
+ fi
 #<!-----------------------------------------------------------------------------------!>#
 #     Alias and bookmark the web folder (try to guess it's location)
 #     This will NOT overwrite a "web" alias previously definded in .bash_aliases
@@ -80,7 +78,7 @@ export PATH=$PATH:$HOME/.local/bin/
 #<!--------------------!>#
 #     .oh-my-git
 #<!--------------------!>#
-source /home/sysadmin/.oh-my-git/prompt.sh
+source $HOME/.oh-my-git/prompt.sh
 #<!-------------!>#
 #     Cargo
 #<!-------------!>#
@@ -101,3 +99,6 @@ export use_color=true
 #<!-----------------------------!>#
 #     If TMUX is installed
 #<!-----------------------------!>#
+#if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#        exec tmux
+#fi
