@@ -101,11 +101,6 @@ sudo ln -fs $HOME/pro/linux/dotfiles-kraken/.bash_aliases $HOME/
 tee -a ~/.bashrc <<EOF
 if [ -d /etc/profile.d ]; then
   for i in /etc/profile.d/custom.sh; do
-    if [ -r  ]; then
-      . $i
-    fi
-  done
-  unset i
 fi
 EOF
 #<!-------------------!>#
