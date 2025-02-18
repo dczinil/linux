@@ -52,6 +52,10 @@ function ver() {
 #..........virtualbox
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 #<!----------!>#
+#     bat
+#<!----------!>#
+export BAT_THEME="gruvbox-dark"
+#<!----------!>#
 #     Vivid
 #<!----------!>#
 # Selecciona un theme diferente cada día
