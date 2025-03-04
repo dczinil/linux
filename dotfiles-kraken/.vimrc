@@ -32,13 +32,28 @@ set expandtab
 set t_Co=256
 colorscheme gruvbox 
 set bg=dark
-"let g:gruvbox_contrat_dark = "hard"
+let g:gruvbox_contrat_dark = "hard"
 highlight Normal ctermbg=NONE
-"let g:lightline = {}
-"let g:lightline.colorscheme = 'gruvbox'
+let g:lightline = {}
+let g:lightline.colorscheme = 'gruvbox'
 set laststatus=2
 let mapleader=" "
 ""Vim-tag
+""vim grapho
+let g:gutentags_ctags_extra_args = '--fields=+neoa --extra=+q'
+let g:gutentags_project_root = ['.git', '.svn', '.hg', '.project', '.root']
+let g:gutentags_define_advanced_commands = 1
+nmap <F8> :TagbarToggle<CR>
+let g:tagbar_width = 30
+let g:tagbar_autoclose = 1
+" Trigger configuration. You need to change this to something other tha
+" - https://github.com/Valloric/YouCompleteMe
+" - https://github.com/nvim-lua/completion-nvim
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 "filenames like *.xml, *.html, *.xhtml, ...
 "These are the file extensions where this plugin is enabled.
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
